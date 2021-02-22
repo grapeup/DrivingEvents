@@ -1,0 +1,1 @@
+julia --color=yes --depwarn=no --project=@. -q -- "..\bootstrap.jl" -r %*

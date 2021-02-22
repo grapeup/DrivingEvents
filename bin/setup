@@ -1,0 +1,1 @@
+julia -e  "endswith(@__DIR__, \"bin\") && cd(\"..\"); include(\"setup.jl\")"

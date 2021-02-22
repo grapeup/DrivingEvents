@@ -16,13 +16,11 @@ end
 
 # ╔═╡ d3df7b06-6eba-11eb-0985-e9e458ee8dc8
 begin
-	include("src/plutoutils.jl")
-	
+	using StatsPlots
 	using Dates
 	using JSON
 	using CSV
 	using DataFrames
-	using StatsPlots
 	using Gadfly
 	using Genie
 	using PlutoUI 

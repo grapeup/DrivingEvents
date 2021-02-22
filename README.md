@@ -62,6 +62,10 @@ A new window in your browser should appear. Browse for `noteboook/drivingevents.
 
 If you don't want to use interactive version just run `notebook/drivingevents.html`
 
-## Online notebook server
+## Online notebook
 
-The example of running notebook server is at [http://demo-daniel.rnd.grapeup.com/ui/](http://demo-daniel.rnd.grapeup.com/ui/)
+Static HTML version of the notebook can be also found online under this link: [http://demo-daniel.rnd.grapeup.com/ui/](http://demo-daniel.rnd.grapeup.com/notebook/)
+
+## Non-technical presentation
+
+The presentation can be found in the root folder, filename: DrivingEvents.pdf.

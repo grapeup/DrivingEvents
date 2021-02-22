@@ -1,7 +1,14 @@
 module DrivingEvents
 
-using Pluto
+using Genie, Logging, LoggingExtras
 
-runpluto() = Pluto.run()
+function main()
+    Base.eval(Main, :(const UserApp = DrivingEvents))
 
-end # module
+    Genie.genie(; context = @__MODULE__)
+
+    Base.eval(Main, :(const Genie = DrivingEvents.Genie))
+    Base.eval(Main, :(using Genie))
+end
+
+end
