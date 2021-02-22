@@ -10,6 +10,10 @@ begin
 	rootdir = joinpath(@__DIR__, "..")
 	Pkg.activate(rootdir)
 	Pkg.instantiate()
+	Pkg.add("Gadfly")
+	Pkg.precompile()
+	Pkg.add("StatsPlots")
+	Pkg.precompile()
 	cd(rootdir)
 	md"project root and current directory: $(pwd())"
 end

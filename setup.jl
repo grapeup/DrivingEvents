@@ -17,7 +17,3 @@ end
 run(`$(joinpath(Conda.PYTHONDIR, "$(pythonbin)")) -m pip install mlflow`)
 
 pkg"precompile"
-pkg"add Gadfly"
-pkg"precompile"
-pkg"add StatsPlots"
-pkg"precompile"
