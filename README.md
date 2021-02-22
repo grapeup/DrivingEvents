@@ -3,7 +3,7 @@ Workflow example on the example of a aggressive driving events classifier.
 
 
 ## Data 
-The dataset comes from [this reposityory](https://github.com/jair-jr/driverBehaviorDataset)
+The dataset comes from [this reposityory](https://github.com/jair-jr/driverBehaviorDataset).
 
 Please download the data and create following file structure:
 ```
@@ -42,13 +42,13 @@ The `data` directory should be placed in root of the project (this file location
 
 ## Run locally
 
-Please [download](https://julialang.org/downloads/) and install Julia 1.5.3. `julia` or `julia.exe` binary should be added to `PATH` variable.
+Please [download](https://julialang.org/downloads/) and install Julia 1.5.3. `julia` or `julia.exe` binary should be added to `PATH` environment variable.
 
-Then in the root of the project type 
+Then in the root of the project type:
 
 `julia --project`
 
-and then
+And then:
 
 `]instantiate`
 
@@ -56,7 +56,7 @@ Presss backspace and type:
 
 `using Pluto; Pluto.run()`
 
-A new window in browser should appear. Browse for `noteboook/drivingevents.jl`. And you should see the notebook. Wait for a while until all notebooks will be loaded. It may take a little as Julia is compiled language.
+A new window in your browser should appear. Browse for `noteboook/drivingevents.jl`. You should see the notebook. Wait for a while until all sections will be loaded. It may take some time as Julia is compiled language.
 
 ## Static HTML
 
