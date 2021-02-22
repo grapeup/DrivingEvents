@@ -40,7 +40,7 @@ data
 
 The `data` directory should be placed in root of the project (this file location).
 
-## Run locally
+## Run interactive notebook locally
 
 Please [download](https://julialang.org/downloads/) and install Julia 1.5.3. `julia` or `julia.exe` binary should be added to `PATH` environment variable.
 
@@ -65,6 +65,24 @@ If you don't want to use interactive version just run `notebook/drivingevents.ht
 ## Online notebook
 
 Static HTML version of the notebook can be also found online under this link: [http://demo-daniel.rnd.grapeup.com/ui/](http://demo-daniel.rnd.grapeup.com/notebook/)
+
+## Run server locally
+
+Please [download](https://julialang.org/downloads/) and install Julia 1.5.3. `julia` or `julia.exe` binary should be added to `PATH` environment variable.
+
+Then in the root of the project type:
+
+`sh bin/setup`
+`sh bin/server`
+
+## Run docker
+
+Please install docker with docker-compose tool.
+
+Then in the root of the project type:
+
+`sh dockerbuild.sh`
+`sh dockerrun.sh`
 
 ## Non-technical presentation
 
