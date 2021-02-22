@@ -42,11 +42,14 @@ The `data` directory should be placed in root of the project (this file location
 
 ## Run locally
 
-Please download and install Julia 1.5.3. `julia` or `julia.exe` binary should be added to `PATH` variable.
+Please [download](https://julialang.org/downloads/) and install Julia 1.5.3. `julia` or `julia.exe` binary should be added to `PATH` variable.
 
 Then in the root of the project type 
 
 `julia --project`
+
+and then
+
 `]instantiate`
 
 Presss backspace and type:
