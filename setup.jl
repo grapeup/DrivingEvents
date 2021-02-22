@@ -10,13 +10,14 @@ using Conda
 
 Conda.add("pip")
 
-Conda.add_channel("conda-forge")
-Conda.add("poppler")
-
 pythonbin = "python"
 if Sys.iswindows()
     pythonbin = "python.exe"
 end
 run(`$(joinpath(Conda.PYTHONDIR, "$(pythonbin)")) -m pip install mlflow`)
 
+pkg"precompile"
+pkg"add Gadfly"
+pkg"precompile"
+pkg"add StatsPlots"
 pkg"precompile"
