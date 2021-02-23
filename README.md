@@ -64,7 +64,7 @@ If you don't want to use interactive version just run `notebook/drivingevents.ht
 
 ## Online notebook
 
-Static HTML version of the notebook can be also found online under this link: [http://demo-daniel.rnd.grapeup.com/notebook/](http://demo-daniel.rnd.grapeup.com/notebook/).
+Static HTML version of the notebook can be also found online under this link: [http://demo-daniel.rnd.grapeup.com/notebook](http://demo-daniel.rnd.grapeup.com/notebook).
 
 ## Mlflow
 
