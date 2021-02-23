@@ -1133,8 +1133,8 @@ with_terminal() do
 	
 	println(classification_report(y_test, y_pred, target_names = ylabels))
 	
-	rfcaccuracy = sum(y_pred .== y_test) / length(y_test) * 100
-	println("accuracy: $rfcaccuracy %")
+	accuracy = sum(y_pred .== y_test) / length(y_test) * 100
+	println("accuracy: $accuracy %")
 	println("train time: $traintime seconds")
 	println("test time: $testtime seconds")
 end
@@ -1152,8 +1152,8 @@ with_terminal() do
 	
 	println(classification_report(y_test, y_pred, target_names = ylabels))
 	
-	rfcaccuracy = sum(y_pred .== y_test) / length(y_test) * 100
-	println("accuracy: $rfcaccuracy %")
+	accuracy = sum(y_pred .== y_test) / length(y_test) * 100
+	println("accuracy: $accuracy %")
 	println("train time: $traintime seconds")
 	println("test time: $testtime seconds")
 end
@@ -1171,8 +1171,8 @@ with_terminal() do
 	
 	println(classification_report(y_test, y_pred, target_names = ylabels))
 	
-	rfcaccuracy = sum(y_pred .== y_test) / length(y_test) * 100
-	println("accuracy: $rfcaccuracy %")
+	accuracy = sum(y_pred .== y_test) / length(y_test) * 100
+	println("accuracy: $accuracy %")
 	println("train time: $traintime seconds")
 	println("test time: $testtime seconds")
 end
@@ -1198,7 +1198,7 @@ md"Random forest cross-validation."
 
 # ╔═╡ 98145dbe-743c-11eb-0342-c5a4069c4e36
 with_terminal() do	
-	rfcaccuracy = 100 * cross_val_score(
+	accuracy = 100 * cross_val_score(
 		rfc, 
 		X, 
 		y,
@@ -1208,7 +1208,7 @@ with_terminal() do
 			target_names = ylabels
 		)
 	)
-	println("mean accuracy: $(mean(rfcaccuracy)) %")
+	println("mean accuracy: $(mean(accuracy)) %")
 end
 
 # ╔═╡ 676faae4-7467-11eb-0ede-6d376aa8113b
@@ -1216,7 +1216,7 @@ md"K-Nearest-Neighbors cross-validation."
 
 # ╔═╡ b592d830-73a1-11eb-11ea-891151e7983b
 with_terminal() do	
-	rfcaccuracy = 100 * cross_val_score(
+	accuracy = 100 * cross_val_score(
 		knn, 
 		X, 
 		y,
@@ -1226,7 +1226,7 @@ with_terminal() do
 			target_names = ylabels
 		)
 	)
-	println("mean accuracy: $(mean(rfcaccuracy)) %")
+	println("mean accuracy: $(mean(accuracy)) %")
 end
 
 # ╔═╡ ebc07afc-74fc-11eb-2cea-ad39fbe43470
@@ -1234,7 +1234,7 @@ md"Gaussian Naive Bayes cross-validation."
 
 # ╔═╡ f7407a3a-74fc-11eb-3f52-5165bd7c661b
 with_terminal() do	
-	rfcaccuracy = 100 * cross_val_score(
+	accuracy = 100 * cross_val_score(
 		gnb, 
 		X, 
 		y,
@@ -1244,7 +1244,7 @@ with_terminal() do
 			target_names = ylabels
 		)
 	)
-	println("mean accuracy: $(mean(rfcaccuracy)) %")
+	println("mean accuracy: $(mean(accuracy)) %")
 end
 
 # ╔═╡ d352f308-7398-11eb-2ff1-f3c19646aa00
@@ -1338,7 +1338,7 @@ end
 
 # ╔═╡ 455d52e0-747d-11eb-1f0a-23d661bdef04
 with_terminal() do
-	rfcaccuracy = 100 * cross_val_score(
+	accuracy = 100 * cross_val_score(
 		rfc, 
 		X2, 
 		y2,
@@ -1349,8 +1349,8 @@ with_terminal() do
 		)
 	)
 
-	println("mean accuracy: $(mean(rfcaccuracy)) %")
-	mlflow.log_metric("cv_mean_accuracy", mean(rfcaccuracy))
+	println("mean accuracy: $(mean(accuracy)) %")
+	mlflow.log_metric("cv_mean_accuracy", mean(accuracy))
 end
 
 # ╔═╡ 2722e97e-747e-11eb-27f8-15104e9564ed
