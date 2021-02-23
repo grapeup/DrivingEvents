@@ -61,7 +61,7 @@ md"Python imports."
 
 # ╔═╡ 9185384e-7393-11eb-2be3-dba24541dfbf
 begin
-	np = pyimport("numpy")
+	mlflow = pyimport("mlflow")
 	
 	@sk_import utils.class_weight: compute_class_weight
 	@sk_import metrics: confusion_matrix
@@ -72,6 +72,18 @@ begin
 	@sk_import neighbors: KNeighborsClassifier
 	@sk_import ensemble: RandomForestClassifier
 	nothing
+end
+
+# ╔═╡ 5d96ac50-7593-11eb-3686-b9be36643e28
+md"Setup mlflow."
+
+# ╔═╡ 54a25860-7593-11eb-0dc8-c189891997f7
+begin
+	remote_server_uri = "http://18.185.244.61:5050"
+    mlflow.set_tracking_uri(remote_server_uri)
+    mlflow.set_experiment("DrivingEvents") 
+    mlflow.end_run()
+    mlflow.start_run(run_name = "")
 end
 
 # ╔═╡ c71223e6-715c-11eb-3aa0-49eef018dde0
@@ -1306,6 +1318,24 @@ X2_train, X2_test, y2_train, y2_test = train_test_split(
 # ╔═╡ 3627e6dc-747d-11eb-30e1-472ffff01a13
 md"Random forest cross-validation."
 
+# ╔═╡ 81c28d40-7595-11eb-0569-6b5557dc1410
+md"Lest log this experiment to mlflow."
+
+# ╔═╡ 99390580-7595-11eb-123f-b31bf9a83930
+begin
+	params  = Dict(
+		"model" => "random forest",
+		"nfolds" => 2,
+		"random_state" => 42,
+		"class_weight" => "balanced",
+		"window" => δ
+	)
+	
+	mlflow.log_param("features", colnames2)
+	mlflow.log_param("params", params)
+	mlflow.log_param("classes", ylabels2)
+end
+
 # ╔═╡ 455d52e0-747d-11eb-1f0a-23d661bdef04
 with_terminal() do
 	rfcaccuracy = 100 * cross_val_score(
@@ -1318,7 +1348,9 @@ with_terminal() do
 			target_names = ylabels
 		)
 	)
+
 	println("mean accuracy: $(mean(rfcaccuracy)) %")
+	mlflow.log_metric("cv_mean_accuracy", mean(rfcaccuracy))
 end
 
 # ╔═╡ 2722e97e-747e-11eb-27f8-15104e9564ed
@@ -1356,6 +1388,9 @@ end
 # ╔═╡ 5d575f82-7483-11eb-1541-590a6be93c4b
 md"Confusion matrix shows that the model makes only a few mistakes (but the number of complete events is small). The most common error is between aggressive right turn and acceleration."
 
+# ╔═╡ cdd2d530-7597-11eb-0ccf-f99f104849ba
+mlflow.end_run()
+
 # ╔═╡ Cell order:
 # ╟─644a7e0a-6eb8-11eb-261c-9feb1fe2b353
 # ╟─95d96c92-6ebd-11eb-136d-1d3a3f7f0893
@@ -1365,6 +1400,8 @@ md"Confusion matrix shows that the model makes only a few mistakes (but the numb
 # ╠═d3df7b06-6eba-11eb-0985-e9e458ee8dc8
 # ╟─d989fcaa-7434-11eb-3223-0935342ccefd
 # ╠═9185384e-7393-11eb-2be3-dba24541dfbf
+# ╟─5d96ac50-7593-11eb-3686-b9be36643e28
+# ╠═54a25860-7593-11eb-0dc8-c189891997f7
 # ╟─c71223e6-715c-11eb-3aa0-49eef018dde0
 # ╠═f79fe3b0-715c-11eb-0517-4ff69996aca5
 # ╟─cb9cc790-6ec0-11eb-1163-8301e347a97f
@@ -1480,8 +1517,11 @@ md"Confusion matrix shows that the model makes only a few mistakes (but the numb
 # ╠═f6e9ad98-74b8-11eb-06b2-5da43d795a54
 # ╠═0a86cbec-747d-11eb-20ef-45e0d2be6651
 # ╟─3627e6dc-747d-11eb-30e1-472ffff01a13
+# ╟─81c28d40-7595-11eb-0569-6b5557dc1410
+# ╠═99390580-7595-11eb-123f-b31bf9a83930
 # ╠═455d52e0-747d-11eb-1f0a-23d661bdef04
 # ╟─2722e97e-747e-11eb-27f8-15104e9564ed
 # ╟─8a11530e-747e-11eb-30f2-318bf235d845
 # ╠═111432ac-7484-11eb-1d67-532a9a95ec82
 # ╟─5d575f82-7483-11eb-1541-590a6be93c4b
+# ╠═cdd2d530-7597-11eb-0ccf-f99f104849ba
