@@ -1,9 +1,9 @@
 ## Driving Events
-Workflow example on the example of a aggressive driving events classifier.
+Aggressive driving events classifier - workflow example.
 
 
 ## Data 
-The dataset comes from [this reposityory](https://github.com/jair-jr/driverBehaviorDataset).
+The dataset comes from [this repository](https://github.com/jair-jr/driverBehaviorDataset).
 
 Please download the data and create following file structure:
 ```
